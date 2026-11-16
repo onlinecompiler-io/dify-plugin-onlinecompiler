@@ -1,0 +1,264 @@
+identity:
+  name: run_code
+  author: onlinecompiler
+  label:
+    en_US: Run Code
+    zh_Hans: 运行代码
+    ja_JP: コードを実行
+    pt_BR: Executar código
+description:
+  human:
+    en_US: Run a program in a sandbox and get its output, errors, exit code, time and memory.
+    zh_Hans: 在沙箱中运行程序，返回输出、错误、退出码、运行时间和内存。
+    ja_JP: サンドボックスでプログラムを実行し、出力、エラー、終了コード、実行時間とメモリを返します。
+    pt_BR: Execute um programa numa sandbox e receba a saída, os erros, o código de saída, o tempo e a memória.
+  llm: >-
+    Run a program in the OnlineCompiler.io sandbox (no network, up to 30 seconds, 512 MB) and get its standard
+    output, standard error, exit code, time and memory. Use it to compute answers or check code instead of guessing.
+    Exit code 124 means the program ran out of time and 137 that it ran out of memory. Files the program writes to
+    the directory in the OUTPUT_DIR environment variable (PNG, SVG, CSV, JSON or text, up to 8 files and 2 MB) come
+    back as files, so a matplotlib chart shows as an image: plt.show() saves each open figure.
+parameters:
+  - name: compiler
+    type: select
+    required: true
+    default: python-3.14
+    label:
+      en_US: Compiler
+      zh_Hans: 编译器
+      ja_JP: コンパイラ
+      pt_BR: Compilador
+    human_description:
+      en_US: The language and version to run the code with, for example python-3.14 or gcc-15.
+      zh_Hans: 运行代码所用的语言和版本，例如 python-3.14 或 gcc-15。
+      ja_JP: コードを実行する言語とバージョン。例：python-3.14、gcc-15。
+      pt_BR: A linguagem e a versão para executar o código, por exemplo python-3.14 ou gcc-15.
+    llm_description: >-
+      The compiler id. Common ones: python-3.14 (with numpy, pandas, scipy, scikit-learn, matplotlib and more),
+      nodejs-24 (JavaScript), typescript-deno, gcc-15 (C), g++-15 (C++), openjdk-25 (Java), go-1.26, rust-1.93,
+      dotnet-csharp-10 (C#), php-8.5, ruby-4.0, kotlin-2.4, swift-6.4, bash-5.2, sqlite-3 and duckdb-1.5 (SQL).
+      Default python-3.14.
+    form: llm
+    options:
+      - value: "python-3.14"
+        label:
+          en_US: "Python 3.14"
+      - value: "python-3.14-pandas2"
+        label:
+          en_US: "Python 3.14 (pandas 2)"
+      - value: "duckdb-1.5"
+        label:
+          en_US: "SQL (DuckDB 1.5)"
+      - value: "gcc-15"
+        label:
+          en_US: "C (gcc 15)"
+      - value: "g++-15"
+        label:
+          en_US: "C++ (g++ 15)"
+      - value: "g++-15-cpp20"
+        label:
+          en_US: "C++20 (g++ 15)"
+      - value: "openjdk-25"
+        label:
+          en_US: "Java 25"
+      - value: "dotnet-csharp-10"
+        label:
+          en_US: "C# (.NET 10)"
+      - value: "dotnet-fsharp-10"
+        label:
+          en_US: "F# (.NET 10)"
+      - value: "php-8.5"
+        label:
+          en_US: "PHP 8.5"
+      - value: "ruby-4.0"
+        label:
+          en_US: "Ruby 4.0"
+      - value: "haskell-9.12"
+        label:
+          en_US: "Haskell 9.12"
+      - value: "go-1.26"
+        label:
+          en_US: "Go 1.26"
+      - value: "rust-1.93"
+        label:
+          en_US: "Rust 1.93"
+      - value: "typescript-deno"
+        label:
+          en_US: "TypeScript (Deno)"
+      - value: "nodejs-24"
+        label:
+          en_US: "JavaScript (Node.js 24)"
+      - value: "sqlite-3"
+        label:
+          en_US: "SQL (SQLite 3)"
+      - value: "bash-5.2"
+        label:
+          en_US: "Bash 5.2"
+      - value: "gfortran-15"
+        label:
+          en_US: "Fortran (gfortran 15)"
+      - value: "dotnet-vbnet-10"
+        label:
+          en_US: "Visual Basic (.NET 10)"
+      - value: "kotlin-2.4"
+        label:
+          en_US: "Kotlin 2.4"
+      - value: "r-4.6"
+        label:
+          en_US: "R 4.6"
+      - value: "swift-6.4"
+        label:
+          en_US: "Swift 6.4"
+      - value: "gnucobol-3.2"
+        label:
+          en_US: "COBOL (GnuCOBOL 3.2)"
+      - value: "perl-5.44"
+        label:
+          en_US: "Perl 5.44"
+      - value: "julia-1.13"
+        label:
+          en_US: "Julia 1.13"
+      - value: "fpc-3.2"
+        label:
+          en_US: "Pascal (Free Pascal 3.2)"
+      - value: "octave-11"
+        label:
+          en_US: "Octave 11"
+      - value: "nasm-3"
+        label:
+          en_US: "Assembly (NASM 3)"
+      - value: "lua-5.5"
+        label:
+          en_US: "Lua 5.5"
+      - value: "ocaml-5.4"
+        label:
+          en_US: "OCaml 5.4"
+      - value: "sbcl-2.6"
+        label:
+          en_US: "Common Lisp (SBCL 2.6)"
+      - value: "erlang-29"
+        label:
+          en_US: "Erlang (OTP 29)"
+      - value: "elixir-1.20"
+        label:
+          en_US: "Elixir 1.20"
+      - value: "swipl-10"
+        label:
+          en_US: "Prolog (SWI-Prolog 10)"
+      - value: "ldc-1.43"
+        label:
+          en_US: "D (LDC 1.43)"
+      - value: "fbc-1.10"
+        label:
+          en_US: "FreeBASIC 1.10"
+      - value: "dart-3.13"
+        label:
+          en_US: "Dart 3.13"
+      - value: "clojure-1.12"
+        label:
+          en_US: "Clojure 1.12"
+      - value: "groovy-6.0"
+        label:
+          en_US: "Groovy 6.0"
+      - value: "scala-3.10"
+        label:
+          en_US: "Scala 3.10"
+      - value: "zig-0.17"
+        label:
+          en_US: "Zig 0.17"
+      - value: "nim-2.2"
+        label:
+          en_US: "Nim 2.2"
+      - value: "crystal-1.22"
+        label:
+          en_US: "Crystal 1.22"
+      - value: "gnat-15"
+        label:
+          en_US: "Ada (GNAT 15)"
+      - value: "powershell-7.6"
+        label:
+          en_US: "PowerShell 7.6"
+      - value: "racket-9.3"
+        label:
+          en_US: "Racket 9.3"
+      - value: "clang-objc-21"
+        label:
+          en_US: "Objective-C (Clang 21)"
+  - name: code
+    type: string
+    required: true
+    label:
+      en_US: Code
+      zh_Hans: 代码
+      ja_JP: コード
+      pt_BR: Código
+    human_description:
+      en_US: The whole program, as one source file.
+      zh_Hans: 完整的程序，作为一个源文件。
+      ja_JP: プログラム全体（1 つのソースファイル）。
+      pt_BR: O programa inteiro, como um único arquivo-fonte.
+    llm_description: >-
+      The complete program as one source file. Print what you want to see: only standard output and standard error
+      come back.
+    form: llm
+  - name: input
+    type: string
+    required: false
+    label:
+      en_US: Standard Input
+      zh_Hans: 标准输入
+      ja_JP: 標準入力
+      pt_BR: Entrada padrão
+    human_description:
+      en_US: Text the program reads from standard input. Optional.
+      zh_Hans: 程序从标准输入读取的文本。可选。
+      ja_JP: プログラムが標準入力から読み込むテキスト。省略可。
+      pt_BR: Texto que o programa lê da entrada padrão. Opcional.
+    llm_description: Standard input (stdin) for the program, as text. Leave empty if the program reads none.
+    form: llm
+  - name: time_limit
+    type: number
+    required: false
+    min: 0
+    max: 30
+    label:
+      en_US: Time Limit (seconds)
+      zh_Hans: 时间限制（秒）
+      ja_JP: 制限時間（秒）
+      pt_BR: Limite de tempo (segundos)
+    human_description:
+      en_US: Seconds the program may run, above 0 and at most 30. Leave empty for 30.
+      zh_Hans: 程序可运行的秒数，大于 0 且不超过 30。留空则为 30。
+      ja_JP: プログラムが実行できる秒数（0 より大きく 30 以下）。空欄なら 30。
+      pt_BR: Segundos que o programa pode rodar, acima de 0 e no máximo 30. Deixe vazio para 30.
+    llm_description: >-
+      Seconds the program may run, above 0 and at most 30. Leave it out for the maximum of 30. Compiling before the
+      run does not count.
+    form: llm
+output_schema:
+  type: object
+  properties:
+    output:
+      type: string
+      description: Standard output, cut at 64 KB.
+    error:
+      type: string
+      description: Standard error, or the compiler's errors.
+    status:
+      type: string
+      description: success when the exit code is 0, error otherwise.
+    exit_code:
+      type: number
+      description: The exit code. 124 is a time limit, 137 a memory limit.
+    time:
+      type: string
+      description: Run time in seconds, as a decimal string.
+    memory:
+      type: string
+      description: Memory used in KB, as a decimal string.
+    truncated:
+      type: boolean
+      description: True when the output or errors went over 64 KB and were cut.
+extra:
+  python:
+    source: tools/run_code.py

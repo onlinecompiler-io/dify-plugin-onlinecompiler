@@ -1,0 +1,22 @@
+identity:
+  name: list_compilers
+  author: onlinecompiler
+  label:
+    en_US: List Compilers
+    zh_Hans: 列出编译器
+    ja_JP: コンパイラ一覧
+    pt_BR: Listar compiladores
+description:
+  human:
+    en_US: List the languages and versions Run Code and Run Tests accept, with the packages installed in each.
+    zh_Hans: 列出 Run Code 和 Run Tests 支持的语言和版本，以及各自已安装的包。
+    ja_JP: Run Code と Run Tests で使える言語とバージョン、それぞれにインストール済みのパッケージを一覧表示します。
+    pt_BR: Lista as linguagens e versões aceitas por Run Code e Run Tests, com os pacotes instalados em cada uma.
+  llm: >-
+    List every compiler id that Run Code and Run Tests accept, with its language name and the packages installed
+    with it (for example python-3.14 has numpy, pandas, matplotlib and scikit-learn). Use it to check whether a
+    language or library is available. Nothing can be installed at run time: the sandbox has no network.
+parameters: []
+extra:
+  python:
+    source: tools/list_compilers.py

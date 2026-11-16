@@ -1,0 +1,25 @@
+# Development settings only: the plugin's runtime dependencies are in requirements.txt, and .difyignore keeps this
+# file out of the package.
+[project]
+name = "dify-plugin-onlinecompiler"
+version = "0.0.1"
+description = "Dify tool plugin to run and judge code with OnlineCompiler.io"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "RunCode Inc." }]
+requires-python = ">=3.12"
+dependencies = [
+    "dify-plugin==0.11.0",
+    "requests==2.34.2",
+]
+
+[project.urls]
+Homepage = "https://onlinecompiler.io"
+Documentation = "https://onlinecompiler.io/docs"
+Repository = "https://github.com/onlinecompiler-io/dify-plugin-onlinecompiler"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pyyaml>=6,<7"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

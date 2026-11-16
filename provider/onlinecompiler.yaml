@@ -1,0 +1,44 @@
+identity:
+  author: onlinecompiler
+  name: onlinecompiler
+  label:
+    en_US: OnlineCompiler.io
+    zh_Hans: OnlineCompiler.io
+    ja_JP: OnlineCompiler.io
+    pt_BR: OnlineCompiler.io
+  description:
+    en_US: Run and judge code in 46 languages in a sandbox with no network, through the OnlineCompiler.io API.
+    zh_Hans: 通过 OnlineCompiler.io API，在无网络的沙箱中运行和评测 46 种语言的代码。
+    ja_JP: OnlineCompiler.io API を使い、ネットワークのないサンドボックスで 46 言語のコードを実行・採点します。
+    pt_BR: Execute e avalie código em 46 linguagens numa sandbox sem rede, pela API do OnlineCompiler.io.
+  icon: icon.svg
+  tags:
+    - education
+    - utilities
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: API Key
+      zh_Hans: API 密钥
+      ja_JP: API キー
+      pt_BR: Chave de API
+    placeholder:
+      en_US: Your OnlineCompiler.io API key
+      zh_Hans: 你的 OnlineCompiler.io API 密钥
+      ja_JP: OnlineCompiler.io の API キー
+      pt_BR: Sua chave de API do OnlineCompiler.io
+    help:
+      en_US: Create a free API key (type API) on your API Keys page. The Free plan includes 100,000 runs a month.
+      zh_Hans: 在 API Keys 页面创建一个免费的 API 密钥（类型选 API）。免费套餐每月包含 100,000 次运行。
+      ja_JP: API Keys ページで無料の API キー（種類は API）を作成してください。Free プランには毎月 100,000 回の実行が含まれます。
+      pt_BR: Crie uma chave de API gratuita (tipo API) na página API Keys. O plano Free inclui 100.000 execuções por mês.
+    url: https://api.onlinecompiler.io/compilers/api-keys/
+tools:
+  - tools/run_code.yaml
+  - tools/run_tests.yaml
+  - tools/list_compilers.yaml
+extra:
+  python:
+    source: provider/onlinecompiler.py

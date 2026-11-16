@@ -1,0 +1,307 @@
+identity:
+  name: run_tests
+  author: onlinecompiler
+  label:
+    en_US: Run Tests
+    zh_Hans: 运行测试
+    ja_JP: テストを実行
+    pt_BR: Executar testes
+description:
+  human:
+    en_US: Judge a program against test cases and get a verdict per test, an overall verdict and a score.
+    zh_Hans: 用测试用例评测程序，返回每个测试的判定、总体判定和分数。
+    ja_JP: テストケースでプログラムを採点し、テストごとの判定、総合判定とスコアを返します。
+    pt_BR: Avalie um programa com casos de teste e receba um veredito por teste, um veredito geral e uma nota.
+  llm: >-
+    Judge a program against test cases in the OnlineCompiler.io sandbox: each test runs the program with the test's
+    input on standard input and compares what it prints with expected_output. Returns an overall verdict (accepted,
+    wrong_answer, time_limit_exceeded, memory_limit_exceeded, runtime_error, compilation_error and others), a score
+    from 0 to 100 (the percentage of tests passed), a short summary and a verdict per test. Every test runs, and
+    each counts as one run.
+parameters:
+  - name: compiler
+    type: select
+    required: true
+    default: python-3.14
+    label:
+      en_US: Compiler
+      zh_Hans: 编译器
+      ja_JP: コンパイラ
+      pt_BR: Compilador
+    human_description:
+      en_US: The language and version to run the code with, for example python-3.14 or gcc-15.
+      zh_Hans: 运行代码所用的语言和版本，例如 python-3.14 或 gcc-15。
+      ja_JP: コードを実行する言語とバージョン。例：python-3.14、gcc-15。
+      pt_BR: A linguagem e a versão para executar o código, por exemplo python-3.14 ou gcc-15.
+    llm_description: >-
+      The compiler id. Common ones: python-3.14 (with numpy, pandas, scipy, scikit-learn, matplotlib and more),
+      nodejs-24 (JavaScript), typescript-deno, gcc-15 (C), g++-15 (C++), openjdk-25 (Java), go-1.26, rust-1.93,
+      dotnet-csharp-10 (C#), php-8.5, ruby-4.0, kotlin-2.4, swift-6.4, bash-5.2, sqlite-3 and duckdb-1.5 (SQL).
+      Default python-3.14.
+    form: llm
+    options:
+      - value: "python-3.14"
+        label:
+          en_US: "Python 3.14"
+      - value: "python-3.14-pandas2"
+        label:
+          en_US: "Python 3.14 (pandas 2)"
+      - value: "duckdb-1.5"
+        label:
+          en_US: "SQL (DuckDB 1.5)"
+      - value: "gcc-15"
+        label:
+          en_US: "C (gcc 15)"
+      - value: "g++-15"
+        label:
+          en_US: "C++ (g++ 15)"
+      - value: "g++-15-cpp20"
+        label:
+          en_US: "C++20 (g++ 15)"
+      - value: "openjdk-25"
+        label:
+          en_US: "Java 25"
+      - value: "dotnet-csharp-10"
+        label:
+          en_US: "C# (.NET 10)"
+      - value: "dotnet-fsharp-10"
+        label:
+          en_US: "F# (.NET 10)"
+      - value: "php-8.5"
+        label:
+          en_US: "PHP 8.5"
+      - value: "ruby-4.0"
+        label:
+          en_US: "Ruby 4.0"
+      - value: "haskell-9.12"
+        label:
+          en_US: "Haskell 9.12"
+      - value: "go-1.26"
+        label:
+          en_US: "Go 1.26"
+      - value: "rust-1.93"
+        label:
+          en_US: "Rust 1.93"
+      - value: "typescript-deno"
+        label:
+          en_US: "TypeScript (Deno)"
+      - value: "nodejs-24"
+        label:
+          en_US: "JavaScript (Node.js 24)"
+      - value: "sqlite-3"
+        label:
+          en_US: "SQL (SQLite 3)"
+      - value: "bash-5.2"
+        label:
+          en_US: "Bash 5.2"
+      - value: "gfortran-15"
+        label:
+          en_US: "Fortran (gfortran 15)"
+      - value: "dotnet-vbnet-10"
+        label:
+          en_US: "Visual Basic (.NET 10)"
+      - value: "kotlin-2.4"
+        label:
+          en_US: "Kotlin 2.4"
+      - value: "r-4.6"
+        label:
+          en_US: "R 4.6"
+      - value: "swift-6.4"
+        label:
+          en_US: "Swift 6.4"
+      - value: "gnucobol-3.2"
+        label:
+          en_US: "COBOL (GnuCOBOL 3.2)"
+      - value: "perl-5.44"
+        label:
+          en_US: "Perl 5.44"
+      - value: "julia-1.13"
+        label:
+          en_US: "Julia 1.13"
+      - value: "fpc-3.2"
+        label:
+          en_US: "Pascal (Free Pascal 3.2)"
+      - value: "octave-11"
+        label:
+          en_US: "Octave 11"
+      - value: "nasm-3"
+        label:
+          en_US: "Assembly (NASM 3)"
+      - value: "lua-5.5"
+        label:
+          en_US: "Lua 5.5"
+      - value: "ocaml-5.4"
+        label:
+          en_US: "OCaml 5.4"
+      - value: "sbcl-2.6"
+        label:
+          en_US: "Common Lisp (SBCL 2.6)"
+      - value: "erlang-29"
+        label:
+          en_US: "Erlang (OTP 29)"
+      - value: "elixir-1.20"
+        label:
+          en_US: "Elixir 1.20"
+      - value: "swipl-10"
+        label:
+          en_US: "Prolog (SWI-Prolog 10)"
+      - value: "ldc-1.43"
+        label:
+          en_US: "D (LDC 1.43)"
+      - value: "fbc-1.10"
+        label:
+          en_US: "FreeBASIC 1.10"
+      - value: "dart-3.13"
+        label:
+          en_US: "Dart 3.13"
+      - value: "clojure-1.12"
+        label:
+          en_US: "Clojure 1.12"
+      - value: "groovy-6.0"
+        label:
+          en_US: "Groovy 6.0"
+      - value: "scala-3.10"
+        label:
+          en_US: "Scala 3.10"
+      - value: "zig-0.17"
+        label:
+          en_US: "Zig 0.17"
+      - value: "nim-2.2"
+        label:
+          en_US: "Nim 2.2"
+      - value: "crystal-1.22"
+        label:
+          en_US: "Crystal 1.22"
+      - value: "gnat-15"
+        label:
+          en_US: "Ada (GNAT 15)"
+      - value: "powershell-7.6"
+        label:
+          en_US: "PowerShell 7.6"
+      - value: "racket-9.3"
+        label:
+          en_US: "Racket 9.3"
+      - value: "clang-objc-21"
+        label:
+          en_US: "Objective-C (Clang 21)"
+  - name: code
+    type: string
+    required: true
+    label:
+      en_US: Code
+      zh_Hans: 代码
+      ja_JP: コード
+      pt_BR: Código
+    human_description:
+      en_US: The whole program to judge, as one source file.
+      zh_Hans: 要评测的完整程序，作为一个源文件。
+      ja_JP: 採点するプログラム全体（1 つのソースファイル）。
+      pt_BR: O programa inteiro a avaliar, como um único arquivo-fonte.
+    llm_description: >-
+      The complete program as one source file. It reads each test's input from standard input and prints its answer
+      to standard output.
+    form: llm
+  - name: tests
+    type: string
+    required: true
+    label:
+      en_US: Tests (JSON)
+      zh_Hans: 测试用例（JSON）
+      ja_JP: テストケース（JSON）
+      pt_BR: Testes (JSON)
+    human_description:
+      en_US: 'A JSON list of tests, for example [{"input": "2 3", "expected_output": "5"}]. Add "hidden": true to show only a test''s verdict.'
+      zh_Hans: 'JSON 格式的测试列表，例如 [{"input": "2 3", "expected_output": "5"}]。加上 "hidden": true 则只显示该测试的判定。'
+      ja_JP: 'テストの JSON リスト。例：[{"input": "2 3", "expected_output": "5"}]。"hidden": true を付けると判定だけを返します。'
+      pt_BR: 'Uma lista JSON de testes, por exemplo [{"input": "2 3", "expected_output": "5"}]. Adicione "hidden": true para mostrar só o veredito do teste.'
+    llm_description: >-
+      A JSON list of test cases, each an object with input (the text given on standard input; may be empty) and
+      expected_output (what a correct program prints), for example [{"input": "2 3", "expected_output": "5"},
+      {"input": "10 -4", "expected_output": "6"}]. Add "hidden": true to a test to get back only its verdict.
+    form: llm
+  - name: checker
+    type: select
+    required: false
+    default: trim
+    label:
+      en_US: Checker
+      zh_Hans: 比较方式
+      ja_JP: 比較方法
+      pt_BR: Comparador
+    human_description:
+      en_US: How the output is compared with expected_output. Default trim.
+      zh_Hans: 输出与 expected_output 的比较方式。默认 trim。
+      ja_JP: 出力と expected_output の比較方法。既定は trim。
+      pt_BR: Como a saída é comparada com expected_output. Padrão trim.
+    llm_description: >-
+      How output is compared: trim ignores trailing whitespace (default), exact is byte for byte, tokens ignores all
+      whitespace differences, float compares numbers within a small tolerance, rows compares lines as an unordered set
+      (for SQL and pandas output), table compares CSV tables with a header row by column name with rows in any order
+      (print df.to_csv()), and table_ordered does the same with rows in order.
+    form: llm
+    options:
+      - value: trim
+        label:
+          en_US: trim (ignore trailing whitespace)
+      - value: exact
+        label:
+          en_US: exact (byte for byte)
+      - value: tokens
+        label:
+          en_US: tokens (ignore whitespace differences)
+      - value: float
+        label:
+          en_US: float (numbers within a tolerance)
+      - value: rows
+        label:
+          en_US: rows (lines in any order)
+      - value: table
+        label:
+          en_US: table (CSV, rows in any order)
+      - value: table_ordered
+        label:
+          en_US: table_ordered (CSV, rows in order)
+  - name: time_limit
+    type: number
+    required: false
+    min: 0
+    max: 30
+    label:
+      en_US: Time Limit per Test (seconds)
+      zh_Hans: 每个测试的时间限制（秒）
+      ja_JP: テストごとの制限時間（秒）
+      pt_BR: Limite de tempo por teste (segundos)
+    human_description:
+      en_US: Seconds each test may take, above 0 and at most 30. Leave empty for 2.
+      zh_Hans: 每个测试可运行的秒数，大于 0 且不超过 30。留空则为 2。
+      ja_JP: 各テストが実行できる秒数（0 より大きく 30 以下）。空欄なら 2。
+      pt_BR: Segundos que cada teste pode levar, acima de 0 e no máximo 30. Deixe vazio para 2.
+    llm_description: Seconds each test may take, above 0 and at most 30. Leave it out for the default of 2.
+    form: llm
+output_schema:
+  type: object
+  properties:
+    verdict:
+      type: string
+      description: The overall verdict, accepted when every test passed.
+    score:
+      type: number
+      description: The percentage of tests passed, 0 to 100.
+    passed:
+      type: number
+      description: Tests passed.
+    total:
+      type: number
+      description: Tests sent.
+    summary:
+      type: string
+      description: One or two plain sentences about the result.
+    compile_error:
+      type: string
+      description: The compiler's output when the code did not compile, otherwise empty.
+    submission:
+      type: string
+      description: The id the result is stored under on OnlineCompiler.io.
+extra:
+  python:
+    source: tools/run_tests.py
