@@ -30,11 +30,11 @@ credentials_for_provider:
       ja_JP: OnlineCompiler.io の API キー
       pt_BR: Sua chave de API do OnlineCompiler.io
     help:
-      en_US: Create a free API key (type API) on your API Keys page. The Free plan includes 100,000 runs a month.
-      zh_Hans: 在 API Keys 页面创建一个免费的 API 密钥（类型选 API）。免费套餐每月包含 100,000 次运行。
-      ja_JP: API Keys ページで無料の API キー（種類は API）を作成してください。Free プランには毎月 100,000 回の実行が含まれます。
-      pt_BR: Crie uma chave de API gratuita (tipo API) na página API Keys. O plano Free inclui 100.000 execuções por mês.
-    url: https://api.onlinecompiler.io/compilers/api-keys/
+      en_US: Sign in with Google or email and copy the key shown on your API Keys page; every new account already has one. The Free plan includes 100,000 runs a month, no card.
+      zh_Hans: 用 Google 或邮箱登录，复制 API Keys 页面上显示的密钥；每个新账户都已自带一个。免费套餐每月包含 100,000 次运行，无需信用卡。
+      ja_JP: Google またはメールでサインインし、API Keys ページに表示されるキーをコピーしてください。新しいアカウントには最初からキーがあります。Free プランには毎月 100,000 回の実行が含まれ、カードは不要です。
+      pt_BR: Entre com Google ou e-mail e copie a chave mostrada na página API Keys; toda conta nova já tem uma. O plano Free inclui 100.000 execuções por mês, sem cartão.
+    url: https://api.onlinecompiler.io/compilers/api-keys/?utm_source=dify
 tools:
   - tools/run_code.yaml
   - tools/run_tests.yaml

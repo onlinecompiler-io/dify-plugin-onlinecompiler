@@ -17,9 +17,9 @@ from typing import Any
 
 import requests
 
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 API_BASE = "https://api.onlinecompiler.io"
-KEYS_URL = "https://api.onlinecompiler.io/compilers/api-keys/"
+KEYS_URL = "https://api.onlinecompiler.io/compilers/api-keys/?utm_source=dify"
 USER_AGENT = f"onlinecompiler-dify/{VERSION}"
 
 DEFAULT_COMPILER = "python-3.14"

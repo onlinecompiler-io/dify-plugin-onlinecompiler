@@ -25,8 +25,8 @@ The plugin needs Dify 1.10.0 or newer.
 
 ## Setup
 
-1. Sign in at [api.onlinecompiler.io](https://api.onlinecompiler.io/compilers/api-keys/) and create an API key of
-   type **API** on the API Keys page. The key is free: the Free plan includes 100,000 runs a month, commercial use
+1. Sign in at [api.onlinecompiler.io](https://api.onlinecompiler.io/compilers/api-keys/?utm_source=dify) with Google or
+   email and copy the key shown on the API Keys page: every new account already has one. The key is free: the Free plan includes 100,000 runs a month, commercial use
    allowed, no credit card.
 2. In Dify, open **Plugins**, select **OnlineCompiler.io** and click **Authorize**.
 3. Paste the key and save.
@@ -176,8 +176,8 @@ Build the package with the [Dify plugin CLI](https://github.com/langgenius/dify-
 binary `dify-plugin-<os>-<arch>`, often renamed to `dify`), from the folder above this one:
 
 ```bash
-dify plugin package ./dify-plugin-onlinecompiler -o onlinecompiler-0.0.1.difypkg
-unzip -l onlinecompiler-0.0.1.difypkg
+dify plugin package ./dify-plugin-onlinecompiler -o onlinecompiler-0.0.2.difypkg
+unzip -l onlinecompiler-0.0.2.difypkg
 ```
 
 The package holds `manifest.yaml`, `main.py`, `_onlinecompiler.py`, `provider/`, `tools/`, `_assets/icon.svg`,
